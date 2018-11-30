@@ -5,6 +5,7 @@ export { default as Stock } from "./Stock";
 // export { default as Calculator } from "./Calculator";
 export { default as Conference } from "./Conference";
 export { default as Home } from "./Home";
+export { default as OrphanDef } from "./OrphanDef";
 // export { default as LoginForm } from "./Login";
 // export { default as SignUpForm } from "./SignUp";
 // export { default as BuyForm } from "./Buy";

@@ -9,16 +9,8 @@ import {
   Home,
   // Main,
   Stock,
-  Conference
-  // Portfolio,
-  // PopularStocks,
-  // Calculator,
-  // LoginForm,
-  // SignUpForm,
-  // BuyForm,
-  // TransactionList,
-  // StockCat,
-  // BarChart
+  Conference,
+  OrphanDef
 } from "./components";
 // import // Login,
 // // Signup,
@@ -40,6 +32,7 @@ export default class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/stock" component={Stock} />
+        <Route exact path="/def" component={OrphanDef} />
         <Route exact path="/conference" component={Conference} />
       </Switch>
     );

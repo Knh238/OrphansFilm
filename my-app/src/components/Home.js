@@ -23,45 +23,14 @@ const styles = {
 
 class Home extends React.Component {
   render() {
+    var days = Math.abs(moment().diff("2020-05-23", "days"));
+
     return (
       <div style={{ backgroundColor: "#80DEEA" }}>
-        >
-        <div>
+        <div style={{ backgroundColor: "#80DEEA" }}>
           <Typography variant="display4" align="center">
             Welcome!
           </Typography>
-          <Typography variant="display2" align="center">
-            Next conference in:
-            {/* {moment("20200523", "YYYYMMDD").fromNow()} */}
-            {moment("20200523", "YYYYMMDD")
-              .startOf("day")
-              .fromNow()}
-          </Typography>
-        </div>
-        {/* <div style={{ backgroundColor: "#80DEEA" }}>
-          <Button
-            variant="contained"
-            title="login"
-            text="login"
-            style={{
-              marginLeft: "25%",
-              height: 200,
-              width: 200,
-              borderRadius: 160,
-              fontSize: 30,
-              backgroundColor: "#03A9F4"
-            }}
-            textStyle={{ color: "white" }}
-            component={Link}
-            to={{
-              pathname: "/login"
-            }}
-          >
-            <Typography variant="display1" align="center">
-              Login
-            </Typography>
-          </Button>
-
           <Button
             variant="contained"
             style={{
@@ -74,16 +43,38 @@ class Home extends React.Component {
               color: "white"
             }}
             component={Link}
-            to={{
-              pathname: "/signup"
-            }}
-            title="sign up"
+            to={"/def"}
+            title="definition"
           >
             <Typography variant="display1" align="center">
-              Sign up
+              What is an Orphan Film?
             </Typography>
           </Button>
-        </div> */}
+        </div>
+        <div>
+          <Typography variant="display2" align="center">
+            Next conference in : {days} days
+          </Typography>
+          <Card>
+            <Typography variant="display2" align="center">
+              ORPHANS 12 May 23-26, 2020
+            </Typography>
+            <Typography variant="display2" align="center">
+              EYE Netherlands Filmmuseum in Amsterdam.
+            </Typography>
+          </Card>
+          <Card>
+            <Typography variant="display2" align="center">
+              June 7 & 8, 2019,
+            </Typography>
+            <Typography variant="display2" align="center">
+              the Austrian Film Museum in Vienna hosts
+            </Typography>
+            <Typography variant="display2" align="center">
+              "Radicals," a two-day edition of the NYU Orphan Film Symposium.
+            </Typography>
+          </Card>
+        </div>
         <Card
           style={{
             width: "55%",
