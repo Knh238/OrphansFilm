@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import firebase from "../firebase";
 
 const styles = {
   card: {

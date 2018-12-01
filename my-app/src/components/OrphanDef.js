@@ -60,11 +60,25 @@ class OrphanDef extends React.Component {
           backgroundColor: "#80DEEA"
         }}
       >
+        <Card
+          style={{
+            width: "55%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: 10
+          }}
+        >
+          <CardMedia
+            component="img"
+            // height={600}
+            image="http://www.sc.edu/filmsymposium/archive/images/amateurs.jpeg"
+            //image="http://www.nyu.edu/orphanfilm/img/Radicals_postcard_2019_B.png"
+            title="home"
+            // width={400}
+          />
+        </Card>
         >
         <div>
-          <Typography variant="display4" align="center">
-            Welcome!
-          </Typography>
           <Typography variant="display2" align="center">
             Next conference in : {days} days
           </Typography>
@@ -120,23 +134,6 @@ class OrphanDef extends React.Component {
             ))}
           </Grid>
         </div>
-        {/* <Card
-          style={{
-            width: "55%",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginTop: 10
-          }}
-        > */}
-        {/* <CardMedia
-            component="img"
-            // height={600}
-            //image="https://cdn163.picsart.com/223256630016202.jpg?c480x480"
-            image="http://www.nyu.edu/orphanfilm/img/Radicals_postcard_2019_B.png"
-            title="home"
-            // width={400}
-          />
-        </Card> */}
       </div>
     );
   }
