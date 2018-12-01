@@ -253,6 +253,18 @@ class NavDrawer extends React.Component {
               <ListItemIcon>
                 <WorkIcon />
               </ListItemIcon>
+              <ListItemText primary={"Events"} />
+            </ListItem>
+            <ListItem
+              button
+              key={"portfolio"}
+              title="portfolio"
+              component={Link}
+              to="/portfolio"
+            >
+              <ListItemIcon>
+                <WorkIcon />
+              </ListItemIcon>
               <ListItemText primary={"Orphans Database"} />
             </ListItem>
 
@@ -267,6 +279,18 @@ class NavDrawer extends React.Component {
                 <ReceiptIcon />
               </ListItemIcon>
               <ListItemText primary={"Social Media"} />
+            </ListItem>
+            <ListItem
+              button
+              key={"Transactions"}
+              title="profile"
+              component={Link}
+              to="/transactions"
+            >
+              <ListItemIcon>
+                <ReceiptIcon />
+              </ListItemIcon>
+              <ListItemText primary={"CFPs"} />
             </ListItem>
             <ListItem
               button

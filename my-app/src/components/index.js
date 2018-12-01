@@ -3,6 +3,7 @@
 export { default as Stock } from "./Stock";
 // export { default as Portfolio } from "./Portfolio";
 // export { default as Calculator } from "./Calculator";
+export { default as AllConferences } from "./AllConferences";
 export { default as Conference } from "./Conference";
 export { default as Home } from "./Home";
 export { default as OrphanDef } from "./OrphanDef";
