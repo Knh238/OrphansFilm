@@ -125,14 +125,14 @@ class Conference extends React.Component {
               style={{ color: "grey" }}
               align="right"
             >
-              Highest
+              Highlights
             </Typography>
             <Typography
               variant="display2"
               style={{ color: "grey" }}
               align="right"
             >
-              Lowest :
+              events
             </Typography>
             <Card align="center">
               <Link
@@ -159,8 +159,7 @@ class Conference extends React.Component {
                   }}
                   labelStyle={{ color: "pink", fontSize: 30 }}
                 >
-                  {" "}
-                  Buy{" "}
+                  participants
                 </Button>
               </Link>
             </Card>

@@ -12,8 +12,10 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import { colors } from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 import axios from "axios";
 import moment from "moment";
+import firebase from "../firebase";
 
 const styles = {
   card: {
@@ -32,6 +34,26 @@ class AllConferences extends React.Component {
     super(props);
     this.state = {};
   }
+  async componentWillMount() {
+    const self = this;
+    firebase.auth().onAuthStateChanged(function(user) {
+      // if (user) {
+      // const currUser = user.uid;
+      var ref = firebase.database().ref(`conferences/`);
+      ref.on("value", function(snapshot) {
+        let conferenceList = snapshot.val();
+        const allListings = [];
+
+        for (let key in conferenceList) {
+          allListings.push(conferenceList[key]);
+        }
+        self.setState({
+          conferences: allListings
+        });
+      });
+      //}
+    });
+  }
   // async componentWillMount() {
   //   const symbol = this.props.location.state;
   //   try {
@@ -46,16 +68,20 @@ class AllConferences extends React.Component {
   // }
 
   render() {
-    console.log("----------this state", this.props.location.state);
+    console.log("----------this state", this.state);
 
     return (
-      <div>
+      // <div>
+      <div style={{ backgroundColor: "#e5a552" }}>
         <Typography
           variant="display4"
-          style={{ backgroundColor: "#29B6F6" }}
+          style={{
+            backgroundColor: "#5b7db1",
+            fontFamily: "Merriweather Sans"
+          }}
           align="center"
         >
-          Stock Info
+          Past Conferences
         </Typography>
         <Paper
           style={{
@@ -65,110 +91,40 @@ class AllConferences extends React.Component {
             height: "50%"
           }}
         >
-          <Card style={{ backgroundColor: "#80DEEA" }}>
-            <Typography variant="display3" align="center">
-              2014
-            </Typography>
-            <Typography variant="display2" align="center">
-              where
-            </Typography>
-          </Card>
-          <Card style={{ backgroundColor: "#E8EAF6" }}>
-            <Typography
-              variant="display2"
-              style={{ color: "black" }}
-              align="center"
-            >
-              2014
-            </Typography>
-            <Typography
-              variant="display4"
-              style={{ color: "black" }}
-              align="center"
-            >
-              description
-            </Typography>
-            <Typography
-              variant="display2"
-              style={{ color: "grey" }}
-              align="center"
-            >
-              2012
-            </Typography>
-
-            <Typography
-              style={{ color: "green" }}
-              variant="display3"
-              align="center"
-            >
-              things 2
-            </Typography>
-
-            <Typography variant="display2" style={{ color: "black" }}>
-              Previous Close:
-            </Typography>
-            <Typography variant="display2" style={{ color: "grey" }}>
-              stff
-            </Typography>
-          </Card>
-          <Card style={{ backgroundColor: "#E8EAF6" }}>
-            <Typography
-              variant="display2"
-              style={{ color: "navy" }}
-              align="right"
-            >
-              Highs & Lows For The Year:
-            </Typography>
-            <Typography
-              variant="display2"
-              style={{ color: "grey" }}
-              align="right"
-            >
-              Highest
-            </Typography>
-            <Typography
-              variant="display2"
-              style={{ color: "grey" }}
-              align="right"
-            >
-              Lowest :
-            </Typography>
-            <Card align="center">
-              <Link
-                to={{
-                  pathname: "/Buy",
-                  state: {
-                    name: this.state.quote.companyName,
-                    cost: this.state.quote.latestPrice,
-                    symbol: this.state.quote.symbol
-                  }
-                }}
-              >
-                <Button
-                  variant="text"
-                  label="buy"
-                  style={{
-                    backgroundColor: "#3F51B5",
-                    marginBottom: 10,
-                    marginTop: 10,
-                    width: "30%",
-                    height: "20%",
-
-                    alignSelf: "center"
-                  }}
-                  labelStyle={{ color: "pink", fontSize: 30 }}
-                >
-                  {" "}
-                  Buy{" "}
-                </Button>
-              </Link>
-            </Card>
-          </Card>
+          {this.state.conferences
+            ? this.state.conferences.map(item => (
+                <Card style={{ backgroundColor: "#00BCD4" }}>
+                  {/* <Card style={{ backgroundColor: "black" }}> */}
+                  <Typography
+                    variant="display3"
+                    style={{ fontFamily: "Merriweather Sans" }}
+                    align="center"
+                  >
+                    {item.year}
+                  </Typography>
+                  <Typography
+                    variant="display2"
+                    style={{ fontFamily: "Merriweather Sans" }}
+                    align="center"
+                  >
+                    "{item.title}"
+                  </Typography>
+                  <CardMedia
+                    component="img"
+                    // height={600}
+                    //image="https://cdn163.picsart.com/223256630016202.jpg?c480x480"
+                    image={item.image}
+                    title="home"
+                    // width={400}
+                  />
+                  <Divider />
+                </Card>
+              ))
+            : null}
         </Paper>
-        ) : null}
       </div>
     );
   }
 }
 
-export default connect()(AllConferences);
+export default AllConferences;

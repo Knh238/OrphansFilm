@@ -4,14 +4,20 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import MovieIcon from "@material-ui/icons/Movie";
+import TheatersIcon from "@material-ui/icons/Theaters";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
 import moment from "moment";
 import Grid from "@material-ui/core/Grid";
+const FontAwesome = require("react-fontawesome");
 //import Grid item from "@material-ui/core/GridItem";
 
 const styles = {
@@ -79,15 +85,13 @@ class OrphanDef extends React.Component {
         </Card>
         >
         <div>
-          <Typography variant="display2" align="center">
-            Next conference in : {days} days
-          </Typography>
           <Card>
-            <Typography variant="display2" align="center">
-              ORPHANS 12 May 23-26, 2020
-            </Typography>
-            <Typography variant="display2" align="center">
-              EYE Netherlands Filmmuseum in Amsterdam.
+            <Typography
+              variant="display2"
+              align="center"
+              style={{ fontFamily: "Merriweather Sans" }}
+            >
+              Click for examples of Orphan films By type
             </Typography>
           </Card>
         </div>
@@ -98,41 +102,134 @@ class OrphanDef extends React.Component {
             direction: "row"
           }}
         >
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-            wrap
+          <GridList
+            cellHeight={160}
+            style={{ marginLeft: 10, width: "90%", height: "90%" }}
+            cols={5}
           >
+            <GridListTile>
+              <IconButton
+              // component={Link}
+              // to={{
+              //   pathname: "/Stock",
+              //   state: this.state.searchStock
+              // }}
+              >
+                <MovieIcon style={{ height: "30%", width: "30%" }} />
+                <Typography
+                  style={{ fontSize: 20, fontFamily: "Merriweather Sans" }}
+                  align="center"
+                  wrap
+                >
+                  another option
+                </Typography>
+              </IconButton>
+            </GridListTile>
+            <GridListTile>
+              <IconButton
+              // component={Link}
+              // to={{
+              //   pathname: "/Stock",
+              //   state: this.state.searchStock
+              // }}
+              >
+                <TheatersIcon style={{ height: "30%", width: "30%" }} />
+                <Typography
+                  style={{ fontSize: 20, fontFamily: "Merriweather Sans" }}
+                  align="center"
+                  wrap
+                >
+                  another option
+                </Typography>
+              </IconButton>
+            </GridListTile>
+
             {typesOfFilm.map((film, index) => (
-              <Grid item xs={6}>
+              <GridListTile
+                style={{ marginTop: 10, marginBottom: 10, height: "25%" }}
+              >
                 <Button
                   variant="contained"
                   key={index}
                   title={film}
                   text={film}
                   style={{
-                    marginLeft: "15%",
-                    height: 200,
-                    width: 200,
+                    // marginLeft: "15%",
+                    height: 170,
+                    width: 170,
                     borderRadius: 160,
-                    fontSize: 30,
+
                     backgroundColor: "#03A9F4"
                   }}
                   textStyle={{ color: "white" }}
+                  wrap
                   //   component={Link}
                   // to={{
                   //   pathname: "/login"
                   // }}
                 >
-                  <Typography variant="display1" align="center">
+                  <Typography
+                    style={{ fontSize: 20, fontFamily: "Merriweather Sans" }}
+                    align="center"
+                    wrap
+                  >
                     {film}
                   </Typography>
                 </Button>
-              </Grid>
+              </GridListTile>
             ))}
-          </Grid>
+          </GridList>
+        </div>
+        <div>
+          <Card>
+            <Typography
+              variant="display2"
+              style={{ fontFamily: "Merriweather Sans" }}
+              align="center"
+            >
+              Still confused?
+            </Typography>
+            <Button
+              variant="contained"
+              key={6}
+              title={"learnMore"}
+              style={{
+                marginLeft: "28%",
+                height: "30%",
+                width: "30%",
+                // borderRadius: 160,
+                backgroundColor: "#03A9F4"
+              }}
+              textStyle={{ color: "white" }}
+              //   component={Link}
+              // to={{
+              //   pathname: "/login"
+              // }}
+            >
+              <FontAwesome
+                // name="plus-circle"
+                align="left"
+                name="plus-square"
+                size="3x"
+                pulse
+                style={{
+                  color: "white",
+                  textShadow: "0 1px 0 rgba(0, 0, 0, 0.1)",
+                  alignContent: "left"
+                }}
+              />
+              <Typography
+                style={{
+                  fontSize: 28,
+                  fontFamily: "Merriweather Sans",
+                  marginLeft: 4
+                }}
+                // align="center"
+              >
+                A more classic definition
+              </Typography>
+            </Button>
+          </Card>
         </div>
       </div>
     );

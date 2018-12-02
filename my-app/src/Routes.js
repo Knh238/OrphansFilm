@@ -10,7 +10,8 @@ import {
   // Main,
   Stock,
   Conference,
-  OrphanDef
+  OrphanDef,
+  AllConferences
 } from "./components";
 // import // Login,
 // // Signup,
@@ -34,6 +35,7 @@ export default class Routes extends Component {
         <Route exact path="/stock" component={Stock} />
         <Route exact path="/def" component={OrphanDef} />
         <Route exact path="/conference" component={Conference} />
+        <Route exact path="/allConferences" component={AllConferences} />
       </Switch>
     );
   }

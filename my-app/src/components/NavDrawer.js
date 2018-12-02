@@ -13,16 +13,22 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import InsertChart from "@material-ui/icons/InsertChart";
+
 import HomeIcon from "@material-ui/icons/Home";
-import ReceiptIcon from "@material-ui/icons/Receipt";
-import ShowChartIcon from "@material-ui/icons/ShowChart";
+
 import ForumIcon from "@material-ui/icons/Forum";
 import WorkIcon from "@material-ui/icons/Work";
 import AccountIcon from "@material-ui/icons/AccountCircle";
+import QueuePlayNextIcon from "@material-ui/icons/QueuePlayNext";
+import HistoryIcon from "@material-ui/icons/History";
+import EventIcon from "@material-ui/icons/Event";
+import LocalMoviesIcon from "@material-ui/icons/LocalMovies";
+import RssFeedIcon from "@material-ui/icons/RssFeed";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import DescriptionIcon from "@material-ui/icons/Description";
 import IconButton from "@material-ui/core/IconButton";
-
+import Badge from "@material-ui/core/Badge";
 import InputBase from "@material-ui/core/InputBase";
 import Button from "@material-ui/core/Button";
 
@@ -30,10 +36,10 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import Avatar from "@material-ui/core/Avatar";
 
 import Icon from "@material-ui/core/Icon";
-
+import moment from "moment";
 import SearchIcon from "@material-ui/icons/Search";
 // import firebase from "../firebase";
-
+const FontAwesome = require("react-fontawesome");
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -123,28 +129,10 @@ class NavDrawer extends React.Component {
     self.setState({ searchSock: "" });
   }
 
-  // logOut() {
-  //   firebase
-  //     .auth()
-  //     .signOut()
-  //     .then(
-  //       function() {
-  //         console.log("Sign out!");
-  //         console.log(firebase.auth().currentUser);
-  //       },
-  //       function(error) {
-  //         console.error(error);
-  //       }
-  //     );
-  //   this.setState({
-  //     user: {}
-  //   });
-  //   this.props.handleLogout();
-  // }
-
   render() {
     const { classes } = this.props;
     const { user } = this.state;
+    var days = Math.abs(moment().diff("2020-05-23", "days"));
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -153,8 +141,8 @@ class NavDrawer extends React.Component {
           className={classes.appBar}
           style={{ background: "#26C6DA" }}
         >
-          <Toolbar>
-            <div className={classes.search}>
+          <Toolbar style={{ justifyContent: "space-between" }}>
+            {/* <div className={classes.search}>
               <InputBase
                 placeholder="Search…"
                 classes={{
@@ -166,25 +154,30 @@ class NavDrawer extends React.Component {
                 }
                 value={this.state.searchStock}
               />
-            </div>
-            <IconButton
-              component={Link}
-              to={{
-                pathname: "/Stock",
-                state: this.state.searchStock
-              }}
-            >
-              <SearchIcon />
-            </IconButton>
+              <IconButton
+                component={Link}
+                to={{
+                  pathname: "/Stock",
+                  state: this.state.searchStock
+                }}
+              >
+                <SearchIcon />
+              </IconButton>
+            </div> */}
 
-            <div style={{ marginLeft: "20%" }}>
+            <div>
               <Typography
                 style={{ flex: "center" }}
-                variant="h4"
+                variant="h2"
                 color="inherit"
                 noWrap
               >
                 The Orphan Film Symposium
+              </Typography>
+            </div>
+            <div lastChild={true} float="right">
+              <Typography variant="display1" style={{ color: "#FDD835" }}>
+                Next conference in : {days} days
               </Typography>
             </div>
           </Toolbar>
@@ -200,7 +193,7 @@ class NavDrawer extends React.Component {
           <List>
             <ListItem button key={"Home"} component={Link} to="/">
               <ListItemIcon>
-                <HomeIcon />
+                <HomeIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
               <ListItemText primary={"Home"} />
             </ListItem>
@@ -209,10 +202,10 @@ class NavDrawer extends React.Component {
               key={"my profile"}
               title="profile"
               component={Link}
-              to="/popularStocks"
+              to="/allConferences"
             >
               <ListItemIcon>
-                <ForumIcon />
+                <QueuePlayNextIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
               <ListItemText primary={"Upcoming Conferences"} />
             </ListItem>
@@ -221,12 +214,28 @@ class NavDrawer extends React.Component {
               key={"my profile"}
               title="profile"
               component={Link}
-              to="/conference"
+              to="/allConferences"
             >
               <ListItemIcon>
-                <ForumIcon />
+                <HistoryIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
               <ListItemText primary={"Past Conferences"} />
+            </ListItem>
+            <ListItem
+              button
+              key={"Transactions"}
+              title="profile"
+              component={Link}
+              to="/transactions"
+            >
+              <ListItemIcon>
+                <FontAwesome
+                  className="super-crazy-colors"
+                  name="trophy"
+                  size="2x"
+                />
+              </ListItemIcon>
+              <ListItemText primary={"Helen Hill Award"} />
             </ListItem>
           </List>
           <Divider />
@@ -239,7 +248,7 @@ class NavDrawer extends React.Component {
               to="/portfolio"
             >
               <ListItemIcon>
-                <WorkIcon />
+                <ForumIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
               <ListItemText primary={"Orphans Blog"} />
             </ListItem>
@@ -251,23 +260,11 @@ class NavDrawer extends React.Component {
               to="/portfolio"
             >
               <ListItemIcon>
-                <WorkIcon />
+                <EventIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
               <ListItemText primary={"Events"} />
+              <Badge badgeContent={4} color="primary" />
             </ListItem>
-            <ListItem
-              button
-              key={"portfolio"}
-              title="portfolio"
-              component={Link}
-              to="/portfolio"
-            >
-              <ListItemIcon>
-                <WorkIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Orphans Database"} />
-            </ListItem>
-
             <ListItem
               button
               key={"Transactions"}
@@ -276,7 +273,7 @@ class NavDrawer extends React.Component {
               to="/transactions"
             >
               <ListItemIcon>
-                <ReceiptIcon />
+                <RssFeedIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
               <ListItemText primary={"Social Media"} />
             </ListItem>
@@ -288,9 +285,9 @@ class NavDrawer extends React.Component {
               to="/transactions"
             >
               <ListItemIcon>
-                <ReceiptIcon />
+                <ThumbUpIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
-              <ListItemText primary={"CFPs"} />
+              <ListItemText primary={"Social Media"} secondary={"option2"} />
             </ListItem>
             <ListItem
               button
@@ -300,11 +297,40 @@ class NavDrawer extends React.Component {
               to="/transactions"
             >
               <ListItemIcon>
-                <ReceiptIcon />
+                <AssignmentIcon style={{ fontSize: 30 }} />
               </ListItemIcon>
-              <ListItemText primary={"Helen Hill Award"} />
+              <ListItemText primary={"CFPs"} />
+              <Badge badgeContent={1} color="secondary" />
             </ListItem>
             <ListItem
+              button
+              key={"Transactions"}
+              title="profile"
+              component={Link}
+              to="/transactions"
+            >
+              <ListItemIcon>
+                <Badge badgeContent={1} color="secondary">
+                  <DescriptionIcon style={{ fontSize: 30 }} />
+                </Badge>
+              </ListItemIcon>
+
+              <ListItemText primary={"CFPs"} secondary={"option2"} />
+            </ListItem>
+            <ListItem
+              button
+              key={"portfolio"}
+              title="portfolio"
+              component={Link}
+              to="/portfolio"
+            >
+              <ListItemIcon>
+                <LocalMoviesIcon style={{ fontSize: 30 }} />
+              </ListItemIcon>
+              <ListItemText primary={"Orphans Database"} />
+            </ListItem>
+
+            {/* <ListItem
               button
               key={"my profile"}
               title="profile"
@@ -328,7 +354,7 @@ class NavDrawer extends React.Component {
                 <ReceiptIcon />
               </ListItemIcon>
               <ListItemText primary={"Attendees 2016"} />
-            </ListItem>
+            </ListItem> */}
 
             {user.uid ? (
               <ListItem>
