@@ -121,7 +121,7 @@ class OrphanDef extends React.Component {
                   align="center"
                   wrap
                 >
-                  another option
+                  another option:A
                 </Typography>
               </IconButton>
             </GridListTile>
@@ -139,7 +139,7 @@ class OrphanDef extends React.Component {
                   align="center"
                   wrap
                 >
-                  another option
+                  another option: B
                 </Typography>
               </IconButton>
             </GridListTile>

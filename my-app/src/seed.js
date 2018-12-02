@@ -1,3 +1,5 @@
+import firebase from "../firebase";
+
 // The Real Indies: A Close Look at Orphan Films (Academy Theater NYC, Oct. 31-Nov. 1, 2014)
 // The Future of Obsolescence (EYE, Amsterdam, Mar. 30 - Apr. 2, 2014)
 // Orphans Midwest: Materiality and the Moving Image (IU Bloomington, Sept. 26-28, 2013)
@@ -132,3 +134,37 @@
 //   dates: "June 7 - 8, 2019"
 // };
 // addConf("11SE", obj);
+
+// const addPhoto = obj => {
+//     firebase.auth().onAuthStateChanged(async function(user) {
+//       // let n = 0;
+//       // if (user && n === 0) {
+//       //   n++;
+//       //   const uid = user.uid;
+
+//       const newKey = await firebase
+//         .database()
+//         .ref(`photos/`)
+//         .push().key;
+
+//       firebase
+//         .database()
+//         .ref(`photos/`)
+//         .child(newKey)
+//         .set(obj);
+//     });
+//   };
+
+//addPhoto()
+//   const obj1 = {
+//     link:
+//       "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2018/03/matinggame1.png",
+//     title: "Mating Games(2018)"
+//   };
+
+// const obj1 = {
+//     link:
+//       "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/13701092635_4a0cd2391f_z.jpg",
+//     title: "TBD"
+//   };
+//   addPhoto(obj1);

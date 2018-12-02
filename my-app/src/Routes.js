@@ -11,7 +11,8 @@ import {
   Stock,
   Conference,
   OrphanDef,
-  AllConferences
+  AllConferences,
+  RandomPhoto
 } from "./components";
 // import // Login,
 // // Signup,
@@ -32,10 +33,11 @@ export default class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/stock" component={Stock} />
+        {/* <Route exact path="/stock" component={Stock} /> */}
         <Route exact path="/def" component={OrphanDef} />
         <Route exact path="/conference" component={Conference} />
         <Route exact path="/allConferences" component={AllConferences} />
+        <Route exact path="/randomPhoto" component={RandomPhoto} />
       </Switch>
     );
   }

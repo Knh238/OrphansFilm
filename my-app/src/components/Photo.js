@@ -29,7 +29,7 @@ const styles = {
   }
 };
 
-class AllConferences extends React.Component {
+class RandomPhoto extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -39,7 +39,7 @@ class AllConferences extends React.Component {
     firebase.auth().onAuthStateChanged(function(user) {
       // if (user) {
       // const currUser = user.uid;
-      var ref = firebase.database().ref(`conferences/`);
+      var ref = firebase.database().ref(`images/`);
       ref.on("value", function(snapshot) {
         let conferenceList = snapshot.val();
         const allListings = [];
@@ -69,33 +69,7 @@ class AllConferences extends React.Component {
 
   render() {
     console.log("----------this state", this.state);
-    // const addPhoto = obj => {
-    //   firebase.auth().onAuthStateChanged(async function(user) {
-    //     // let n = 0;
-    //     // if (user && n === 0) {
-    //     //   n++;
-    //     //   const uid = user.uid;
 
-    //     const newKey = await firebase
-    //       .database()
-    //       .ref(`photos/`)
-    //       .push().key;
-
-    //     firebase
-    //       .database()
-    //       .ref(`photos/`)
-    //       .child(newKey)
-    //       .set(obj);
-    //   });
-    // };
-
-    //addPhoto()
-    // const obj1 = {
-    //   link:
-    //     "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/13701092635_4a0cd2391f_z.jpg",
-    //   title: "TBD"
-    // };
-    // addPhoto(obj1);
     return (
       // <div>
       <div style={{ backgroundColor: "#e5a552" }}>
@@ -153,4 +127,4 @@ class AllConferences extends React.Component {
   }
 }
 
-export default AllConferences;
+export default RandomPhoto;

@@ -13,7 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-
+import TheatersIcon from "@material-ui/icons/Theaters";
 import HomeIcon from "@material-ui/icons/Home";
 
 import ForumIcon from "@material-ui/icons/Forum";
@@ -246,6 +246,22 @@ class NavDrawer extends React.Component {
               title="portfolio"
               component={Link}
               to="/portfolio"
+            >
+              <ListItemIcon>
+                <FontAwesome
+                  className="super-crazy-colors"
+                  name="photo"
+                  size="2x"
+                />
+              </ListItemIcon>
+              <ListItemText primary={"Random Orphan Still"} />
+            </ListItem>
+            <ListItem
+              button
+              key={"portfolio"}
+              title="photo"
+              component={Link}
+              to="/randomPhoto"
             >
               <ListItemIcon>
                 <ForumIcon style={{ fontSize: 30 }} />
