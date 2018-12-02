@@ -167,4 +167,28 @@ import firebase from "../firebase";
 //       "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/13701092635_4a0cd2391f_z.jpg",
 //     title: "TBD"
 //   };
+
+// const obj1 = {
+//   link:
+//     "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/13701092635_4a0cd2391f_z.jpg",
+//   title: "F-F-FLP006-GALERIA TAVITO LUCHI017"
+// };
 //   addPhoto(obj1);
+// const obj1 = {
+//     link:
+//       "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/13701092635_4a0cd2391f_z.jpg",
+//     title: "F-F-FLP006-GALERIA TAVITO LUCHI017"
+//   };
+//   addPhoto(obj1);
+//   const obj2 = {
+//     link:
+//       "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/02/ZuGastBeiWernerNekes_01.jpg",
+//     title: "ZuGastBeiWernerNekes_01"
+//   };
+//   addPhoto(obj2);
+//   const obj3 = {
+//     link:
+//       "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/BertAndShirleyClarkeWedding2.jpg",
+//     title: "BertAndShirleyClarkeWedding2"
+//   };
+//   addPhoto(obj3);

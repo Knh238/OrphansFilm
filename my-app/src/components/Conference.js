@@ -12,6 +12,11 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import { colors } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import TheatersIcon from "@material-ui/icons/Theaters";
+import ChromeReaderIcon from "@material-ui/icons/ChromeReaderMode";
+import FaceIcon from "@material-ui/icons/Face";
+import CollectionsIcon from "@material-ui/icons/Collections";
 import axios from "axios";
 
 import moment from "moment";
@@ -48,15 +53,15 @@ class Conference extends React.Component {
 
   render() {
     console.log("----------this state", this.props.location.state);
-
+    const event = this.props.location.state.conference;
     return (
       <div>
         <Typography
-          variant="display4"
+          variant="display3"
           style={{ backgroundColor: "#29B6F6" }}
           align="center"
         >
-          Stock Info
+          Orphans {event.vol}: {event.title}
         </Typography>
         <Paper
           style={{
@@ -68,10 +73,10 @@ class Conference extends React.Component {
         >
           <Card style={{ backgroundColor: "#80DEEA" }}>
             <Typography variant="display3" align="center">
-              2014
+              {event.location}
             </Typography>
             <Typography variant="display2" align="center">
-              where
+              {event.year}
             </Typography>
           </Card>
           <Card style={{ backgroundColor: "#E8EAF6" }}>
@@ -80,53 +85,20 @@ class Conference extends React.Component {
               style={{ color: "black" }}
               align="center"
             >
-              2014
-            </Typography>
-            <Typography
-              variant="display4"
-              style={{ color: "black" }}
-              align="center"
-            >
-              description
-            </Typography>
-            <Typography
-              variant="display2"
-              style={{ color: "grey" }}
-              align="center"
-            >
-              2012
-            </Typography>
-
-            <Typography
-              style={{ color: "green" }}
-              variant="display3"
-              align="center"
-            >
-              things 2
-            </Typography>
-
-            <Typography variant="display2" style={{ color: "black" }}>
-              Previous Close:
-            </Typography>
-            <Typography variant="display2" style={{ color: "grey" }}>
-              stff
+              {event.dates}
             </Typography>
           </Card>
+          <Card>
+            <CardMedia
+              component="img"
+              // height={600}
+              //image="https://cdn163.picsart.com/223256630016202.jpg?c480x480"
+              image={event.image}
+              title="home"
+              // width={400}
+            />
+          </Card>
           <Card style={{ backgroundColor: "#E8EAF6" }}>
-            <Typography
-              variant="display2"
-              style={{ color: "navy" }}
-              align="right"
-            >
-              Highs & Lows For The Year:
-            </Typography>
-            <Typography
-              variant="display2"
-              style={{ color: "grey" }}
-              align="right"
-            >
-              Highlights
-            </Typography>
             <Typography
               variant="display2"
               style={{ color: "grey" }}
@@ -135,7 +107,7 @@ class Conference extends React.Component {
               events
             </Typography>
             <Card align="center">
-              <Link
+              {/* <Link
                 to={{
                   pathname: "/Buy",
                   state: {
@@ -144,24 +116,82 @@ class Conference extends React.Component {
                     symbol: this.state.quote.symbol
                   }
                 }}
-              >
-                <Button
-                  variant="text"
-                  label="buy"
-                  style={{
-                    backgroundColor: "#3F51B5",
-                    marginBottom: 10,
-                    marginTop: 10,
-                    width: "30%",
-                    height: "20%",
+              > */}
+              <Button
+                variant="text"
+                label="buy"
+                style={{
+                  backgroundColor: "#3F51B5",
+                  marginBottom: 10,
+                  marginTop: 10,
+                  width: "30%",
+                  height: "20%",
 
-                    alignSelf: "center"
-                  }}
-                  labelStyle={{ color: "pink", fontSize: 30 }}
+                  alignSelf: "center"
+                }}
+                labelStyle={{ color: "pink", fontSize: 30 }}
+              >
+                program
+              </Button>
+              {/* </Link> */}
+            </Card>
+            <Card align="center">
+              <IconButton>
+                <TheatersIcon style={{ height: "30%", width: "30%" }} />
+                <Typography
+                  style={{ fontSize: 20, fontFamily: "Merriweather Sans" }}
+                  align="center"
+                  wrap
                 >
-                  participants
-                </Button>
-              </Link>
+                  Screenings
+                </Typography>
+              </IconButton>
+              <Button
+                variant="text"
+                label="buy"
+                style={{
+                  backgroundColor: "#3F51B5",
+                  marginBottom: 10,
+                  marginTop: 10,
+                  width: "30%",
+                  height: "20%",
+
+                  alignSelf: "center"
+                }}
+                labelStyle={{ color: "pink", fontSize: 30 }}
+              >
+                <FaceIcon style={{ height: "30%", width: "30%" }} />
+                participants
+              </Button>
+            </Card>
+            <Card align="center">
+              <IconButton>
+                <CollectionsIcon style={{ height: "30%", width: "30%" }} />
+                <Typography
+                  style={{ fontSize: 20, fontFamily: "Merriweather Sans" }}
+                  align="center"
+                  wrap
+                >
+                  photoalbum
+                </Typography>
+              </IconButton>
+              <Button
+                variant="text"
+                label="buy"
+                style={{
+                  backgroundColor: "#3F51B5",
+                  marginBottom: 10,
+                  marginTop: 10,
+                  width: "30%",
+                  height: "20%",
+
+                  alignSelf: "center"
+                }}
+                labelStyle={{ color: "pink", fontSize: 30 }}
+              >
+                <ChromeReaderIcon style={{ height: "30%", width: "30%" }} />
+                program
+              </Button>
             </Card>
           </Card>
         </Paper>
@@ -171,4 +201,4 @@ class Conference extends React.Component {
   }
 }
 
-export default connect()(Conference);
+export default Conference;

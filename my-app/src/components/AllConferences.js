@@ -89,13 +89,25 @@ class AllConferences extends React.Component {
     //   });
     // };
 
-    //addPhoto()
+    // addPhoto()
     // const obj1 = {
     //   link:
     //     "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/13701092635_4a0cd2391f_z.jpg",
-    //   title: "TBD"
+    //   title: "F-F-FLP006-GALERIA TAVITO LUCHI017"
     // };
     // addPhoto(obj1);
+    // const obj2 = {
+    //   link:
+    //     "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/02/ZuGastBeiWernerNekes_01.jpg",
+    //   title: "ZuGastBeiWernerNekes_01"
+    // };
+    // addPhoto(obj2);
+    // const obj3 = {
+    //   link:
+    //     "https://wp.nyu.edu/orphanfilm/wp-content/uploads/sites/75/2014/05/BertAndShirleyClarkeWedding2.jpg",
+    //   title: "BertAndShirleyClarkeWedding2"
+    // };
+    // addPhoto(obj3);
     return (
       // <div>
       <div style={{ backgroundColor: "#e5a552" }}>
@@ -121,28 +133,37 @@ class AllConferences extends React.Component {
             ? this.state.conferences.map(item => (
                 <Card style={{ backgroundColor: "#00BCD4" }}>
                   {/* <Card style={{ backgroundColor: "black" }}> */}
-                  <Typography
-                    variant="display3"
-                    style={{ fontFamily: "Merriweather Sans" }}
-                    align="center"
+                  <Link
+                    to={{
+                      pathname: "/conference",
+                      state: {
+                        conference: item
+                      }
+                    }}
                   >
-                    {item.year}
-                  </Typography>
-                  <Typography
-                    variant="display2"
-                    style={{ fontFamily: "Merriweather Sans" }}
-                    align="center"
-                  >
-                    "{item.title}"
-                  </Typography>
-                  <CardMedia
-                    component="img"
-                    // height={600}
-                    //image="https://cdn163.picsart.com/223256630016202.jpg?c480x480"
-                    image={item.image}
-                    title="home"
-                    // width={400}
-                  />
+                    <Typography
+                      variant="display3"
+                      style={{ fontFamily: "Merriweather Sans" }}
+                      align="center"
+                    >
+                      {item.year}
+                    </Typography>
+                    <Typography
+                      variant="display2"
+                      style={{ fontFamily: "Merriweather Sans" }}
+                      align="center"
+                    >
+                      "{item.title}"
+                    </Typography>
+                    <CardMedia
+                      component="img"
+                      // height={600}
+                      //image="https://cdn163.picsart.com/223256630016202.jpg?c480x480"
+                      image={item.image}
+                      title="home"
+                      // width={400}
+                    />
+                  </Link>
                   <Divider />
                 </Card>
               ))
